@@ -4,7 +4,6 @@ import {HttpClient} from "@angular/common/http";
 import {API_PATH_SERVICE} from "./api-path.service";
 import {ApiPathInterface} from "../../shared/model/util/ApiPath.interface";
 import {ResponseInterface} from "../../shared/model/util/Response.interface";
-import {CourseView} from "../../shared/model/views/Course.view";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +31,7 @@ export class CourseService {
     return this.http.delete<ResponseInterface>(this.apiPath.apiPath + 'courses/' + id);
   }
 
-  updateCourse(course: CourseView) {
+  updateCourse(course: CourseRequest) {
     return this.http.put<ResponseInterface>(this.apiPath.apiPath + 'courses/', course, {
       params: {
         id: course.id.toString(),

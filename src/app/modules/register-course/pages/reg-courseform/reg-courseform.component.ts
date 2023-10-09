@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TeacherInterface} from "../../../../shared/model/core/Teacher.interface";
 import {CourseService} from "../../../../core/service/course.service";
-import {CourseInterface} from "../../../../shared/model/core/Course.interface";
 import {CourseRequest} from "../../../../shared/model/rquestModels/Course.request";
 
 @Component({

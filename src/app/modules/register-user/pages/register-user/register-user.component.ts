@@ -1,10 +1,9 @@
 import {Component, inject} from '@angular/core';
 
-import {FormBuilder, FormControl, FormGroup, Validators, ɵElement} from '@angular/forms';
-import {UserRegisterService} from "../../../../core/service/user-register.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from "../../../../core/service/user.service";
 import {UserInfoRequest} from "../../../../shared/model/rquestModels/UserInfo.request";
 import {RolesInterface} from "../../../../shared/model/Roles.interface";
-import {ResponseInterface} from "../../../../shared/model/util/Response.interface";
 
 
 @Component({
@@ -60,7 +59,7 @@ export class RegisterUserComponent {
     })
   });
 
-  constructor(private regService: UserRegisterService) {
+  constructor(private regService: UserService) {
   }
 
   regUserInfo!: UserInfoRequest;

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { RegisterCourseRoutingModule } from './register-course-routing.module';
-import { RegCourseformComponent } from './pages/reg-courseform/reg-courseform.component';
+import {RegisterCourseRoutingModule} from './register-course-routing.module';
+import {RegCourseformComponent} from './pages/reg-courseform/reg-courseform.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";

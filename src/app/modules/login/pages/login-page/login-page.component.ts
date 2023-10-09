@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../core/service/auth.service";
+import {User} from "../../../../shared/model/util/User";
+import {getCookie} from "typescript-cookie";
 
 @Component({
   selector: 'wj-login-page',
@@ -25,9 +27,16 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
-      // Perform login logic here (e.g., send data to the server)
-      console.log(this.loginForm.value);
+      let user: User = {
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password
+      }
+      this.authService.login(user).subscribe(res => {
+        let cookie = getCookie("XSRF-TOKEN")!;
+        if (cookie) {
+          window.sessionStorage.setItem("XSRF-TOKEN", cookie);
+        }
+      })
     }
   }
 }

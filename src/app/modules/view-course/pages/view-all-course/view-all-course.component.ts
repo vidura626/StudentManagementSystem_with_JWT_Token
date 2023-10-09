@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CourseView} from "../../../../shared/model/views/Course.view";
 import {CourseService} from "../../../../core/service/course.service";
 import {CourseRequest} from "../../../../shared/model/rquestModels/Course.request";
-import {LoginService} from "../../../../core/service/login.service";
 
 @Component({
   selector: 'wj-view-all-course',

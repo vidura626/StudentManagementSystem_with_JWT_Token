@@ -1,5 +1,13 @@
 .div1 {
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50vh;
+  width: 20vw;
+
   form {
     display: flex;
     flex-direction: column;

@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CourseInterface} from "../../../../shared/model/core/Course.interface";
 import {CourseView} from "../../../../shared/model/views/Course.view";
 import {LoginService} from "../../../../core/service/login.service";
 import {CourseService} from "../../../../core/service/course.service";
-import {CourseRequest} from "../../../../shared/model/rquestModels/Course.request";
 import {TeacherService} from "../../../../core/service/teacher.service";
 
 @Component({
@@ -39,15 +37,7 @@ export class CourseViewCardComponent implements OnInit {
   }
 
   updateCourse(course: CourseView) {
-    const courseReq: CourseRequest = {
-      id: course.id,
-      name: course.name,
-      description: course.description,
-      modifiedDate: course.date,
-      fee: course.fee,
-      teacherID: course.teacherID
-    }
-    this.courseService.updateCourse(course);
+
   }
 
   viewCourse(id: number) {

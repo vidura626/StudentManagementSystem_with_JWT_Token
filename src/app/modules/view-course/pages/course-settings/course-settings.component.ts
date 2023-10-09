@@ -1,9 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {TeacherInterface} from "../../../../shared/model/core/Teacher.interface";
 import {CourseService} from "../../../../core/service/course.service";
 import {CourseRequest} from "../../../../shared/model/rquestModels/Course.request";
-import * as inspector from "inspector";
+import {TeacherService} from "../../../../core/service/teacher.service";
 
 @Component({
   selector: 'wj-course-settings',
@@ -15,7 +14,8 @@ export class CourseSettingsComponent {
   @Input() private courseID!: number;
 
   constructor(private formBuilder: FormBuilder,
-              private courseService: CourseService) {
+              private courseService: CourseService,
+              private teacherService: TeacherService) {
   }
 
   ngOnInit(): void {
@@ -46,7 +46,7 @@ export class CourseSettingsComponent {
 
   courseDetails!: CourseRequest;
 
-  onSubmit(courseForm: FormGroup) {
+  onUpdate(courseForm: FormGroup) {
     // TODO: Handle form submission here
     if (courseForm.valid) {
       this.courseDetails = {

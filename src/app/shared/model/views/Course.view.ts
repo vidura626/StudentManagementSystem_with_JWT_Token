@@ -1,5 +1,3 @@
-import {TeacherInterface} from "../core/Teacher.interface";
-
 export interface CourseView {
   id: number;
   name: string;
