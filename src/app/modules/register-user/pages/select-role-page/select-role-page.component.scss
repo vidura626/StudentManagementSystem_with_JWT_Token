@@ -1,0 +1,28 @@
+#div1 {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#div1 > button:hover {
+  color: black;
+  font-size: 1.55rem;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
+  background-color: #f3f3f3;
+}
+
+#div1 > button {
+  color: black;
+  font-size: 1.5rem;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
+  background-color: aqua;
+  width: 15rem;
+  height: 5rem;
+  padding: 2rem;
+  margin: 1rem;
+}

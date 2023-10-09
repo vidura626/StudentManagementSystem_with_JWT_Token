@@ -1,0 +1,20 @@
+<mat-card class="set-size center p-1">
+  <mat-card-header class="text-bg-dark p-2">
+    <mat-card-title>{{course.name}}id {{course.id}}</mat-card-title>
+    <mat-card-subtitle class="text-bg-dark">Instructor : {{course.teacherName}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="set-size-content center bg-body-tertiary p-2">
+    <p>{{course.description}}</p>
+    <p>Last Update : {{course.date | date}}</p>
+  </mat-card-content>
+  <mat-card-footer class="bg-black">
+    <mat-card-actions>
+      <button mat-raised-button class="m-1 text-bg-success">View</button>
+      <button *ngIf="!isTeacher" mat-raised-button class="m-1 text-bg-success" (click)="viewCourse(course.id)" >Join</button>
+      <button *ngIf="isTeacher" mat-raised-button class="m-1 text-bg-danger" (click)="deleteCourse(course.id)">Delete
+      </button>
+      <button *ngIf="isTeacher" mat-raised-button class="m-1 text-bg-primary" (click)="updateCourse(course)">Update
+      </button>
+    </mat-card-actions>
+  </mat-card-footer>
+</mat-card>

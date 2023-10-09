@@ -1,0 +1,5 @@
+<div class="card-container layout">
+  <wj-course-view-card *ngFor="let course of courseViews" [course]="course"></wj-course-view-card>
+</div>
+
+<mat-paginator [showFirstLastButtons]="showFirstLastButtons" [length]="totalItems" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
