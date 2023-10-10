@@ -5,7 +5,17 @@ import {CourseSettingsComponent} from "./pages/course-settings/course-settings.c
 const routes: Routes = [
   {
     path: '',
-    component: CourseSettingsComponent
+    component: CourseSettingsComponent,
+    children: [
+      {
+        path: 'add',
+        loadChildren: () => import('../register-course/register-course.module').then(m => m.RegisterCourseModule)
+      },
+      {
+        path: 'update/:id',
+        loadChildren: () => import('../register-course/register-course.module').then(m => m.RegisterCourseModule)
+      }
+    ]
   }
 ];
 

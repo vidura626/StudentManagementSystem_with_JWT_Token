@@ -1,0 +1,48 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-table-container">
+
+    <table mat-table [dataSource]="studentsList" class="example-table">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let row">{{row.address}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let row">{{row.userDetails.userName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="contact">
+        <th mat-header-cell *matHeaderCellDef>Contact</th>
+        <td mat-cell *matCellDef="let row">{{row.contact}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef>View</th>
+        <th mat-cell *matCellDef="let row">
+          <button mat-flat-button color="primary" class="m-1" (click)="viewStudent(row)">View</button>
+          <button mat-flat-button color="warn" class="m-1" (click)="deleteStudent(row)">Delete</button>
+        </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr class="rowStyle" (click)="clickRow(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator  [showFirstLastButtons]="showFirstLastButtons" [pageIndex]="pageIndex"
+                  [pageSizeOptions]="pageSizeOptions" [length]="resultsLength" [pageSize]="pageSize"
+                  (page)="onPageChange($event)"
+                 aria-label="Select page of GitHub search results"></mat-paginator>
+</div>

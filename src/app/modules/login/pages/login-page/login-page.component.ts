@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../core/service/auth.service";
 import {User} from "../../../../shared/model/util/User";
 import {getCookie} from "typescript-cookie";
+import {Router} from "@angular/router";
+import {catchError} from "rxjs";
 
 @Component({
   selector: 'wj-login-page',
@@ -13,7 +15,8 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router:Router) {
   }
 
   ngOnInit()
@@ -31,12 +34,24 @@ export class LoginPageComponent implements OnInit {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password
       }
-      this.authService.login(user).subscribe(res => {
-        let cookie = getCookie("XSRF-TOKEN")!;
-        if (cookie) {
-          window.sessionStorage.setItem("XSRF-TOKEN", cookie);
-        }
-      })
+      this.authService.login(user).pipe(
+        catchError(error => {
+          this.router.navigate(['/login']).then(r => {
+            window.location.reload();
+          });
+          alert('Invalid Username or Password');
+          return error
+        })
+      ).subscribe(
+        (value) => {
+          console.log(value)
+          this.authService.setLogin = true;
+          let cookie = getCookie("XSRF-TOKEN")!;
+          if (cookie) {
+            window.sessionStorage.setItem("XSRF-TOKEN", cookie);
+          }
+          this.router.navigate(['/dashboard']);
+        });
     }
   }
 }

@@ -1,0 +1,104 @@
+<form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit(registerForm)" (reset)="resetForm(registerForm)">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>User Details</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width highlight">
+            <input matInput placeholder="Admin" readonly formControlName="adminUserName">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field  class="full-width highlight">
+            <input matInput
+                   [ngStyle]="registerForm.get('status')?.value === 'ACTIVE' ?
+                   {
+                   'color': 'green'
+                   } : {
+                   'color': 'red'
+                   }"
+                   placeholder="Status" readonly formControlName="status">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error *ngIf="registerForm.controls['name'].hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Contact" formControlName="contact">
+            <mat-error *ngIf="registerForm.controls['contact'].hasError('required')">
+              Contact is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Address" formControlName="address"></textarea>
+            <mat-error *ngIf="registerForm.controls['address'].hasError('required')">
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Username (Email)" readonly formControlName="userName">
+            <mat-error *ngIf="registerForm.controls['userName'].hasError('required')">
+              UserName is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>New Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="pwd">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Confirm New password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPwd">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Your Role</mat-label>
+            <mat-select class="highlight" [disabled]="false" formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.value">
+                {{role.roleName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" class="m-1" type="reset">Reset</button>
+      <button mat-raised-button color="primary" class="m-1" type="submit">Update</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -9,15 +9,23 @@ import {User} from "../../shared/model/util/User";
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = false;
+  private isLogin = false;
   private http: HttpClient = inject(HttpClient);
   private apiPath: ApiPathInterface = inject(API_PATH_SERVICE);
 
   login(user: User) {
     window.sessionStorage.setItem("userdetails", JSON.stringify(user));
     return this.http.post<ResponseInterface>(this.apiPath.apiPath + 'user/login', null, {
-      observe: 'response',
+      observe: "response",
       withCredentials: true
     });
+  }
+
+  set setLogin(value: boolean) {
+    this.isLogin = value;
+  }
+
+  get getLogin() {
+    return this.isLogin;
   }
 }
