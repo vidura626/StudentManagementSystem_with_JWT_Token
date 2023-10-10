@@ -12,15 +12,22 @@ export class IntercepterService implements HttpInterceptor {
     if (sessionStorage.getItem('userdetails')) {
       this.user = JSON.parse(sessionStorage.getItem('userdetails')!);
     }
+
     if (this.user && this.user.password && this.user.username) {
       httpHeaders = req.headers.append('Authorization', 'Basic ' + window.btoa(this.user.username + ':' + this.user.password));
       sessionStorage.removeItem("userdetails");
+    } else {
+      let authToken = sessionStorage.getItem('Authorization');
+      if (authToken) {
+        httpHeaders = req.headers.append('Authorization', authToken);
+      }
     }
 
     let xsrf = sessionStorage.getItem('XSRF-TOKEN')!;
     if (xsrf) {
       httpHeaders = req.headers.append('X-XSRF-TOKEN', xsrf);
     }
+
     return next.handle(req.clone({
       headers: httpHeaders
     }));

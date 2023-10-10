@@ -13,6 +13,7 @@ import {catchError} from "rxjs";
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
+
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router) {
@@ -41,16 +42,16 @@ export class LoginPageComponent implements OnInit {
           alert('Invalid Username or Password');
           return error
         })
-      ).subscribe(
-        (value) => {
-          console.log(value)
-          this.authService.setLogin = true;
-          let cookie = getCookie("XSRF-TOKEN")!;
-          if (cookie) {
-            window.sessionStorage.setItem("XSRF-TOKEN", cookie);
-          }
-          this.router.navigate(['/dashboard']);
-        });
+      ).subscribe((resp: any) => {
+        let authorization = resp.headers.get('Authorization');
+        window.sessionStorage.setItem('Authorization', resp.headers.get('Authorization'));
+        this.authService.setLogin = true;
+        let cookie = getCookie("XSRF-TOKEN")!;
+        if (cookie) {
+          window.sessionStorage.setItem("XSRF-TOKEN", cookie);
+        }
+        this.router.navigate(['/dashboard']);
+      });
     }
   }
 }

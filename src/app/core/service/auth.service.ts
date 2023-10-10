@@ -2,9 +2,9 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {API_PATH_SERVICE} from "./api-path.service";
 import {ApiPathInterface} from "../../shared/model/util/ApiPath.interface";
-import {ResponseInterface} from "../../shared/model/util/Response.interface";
 import {User} from "../../shared/model/util/User";
 import {RolesInterface} from "../../shared/model/Roles.interface";
+import {ResponseInterface} from "../../shared/model/util/Response.interface";
 
 @Injectable({
   providedIn: 'root'
