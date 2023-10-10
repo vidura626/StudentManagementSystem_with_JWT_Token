@@ -43,13 +43,14 @@ export class LoginPageComponent implements OnInit {
           return error
         })
       ).subscribe((resp: any) => {
-        let authorization = resp.headers.get('Authorization');
         window.sessionStorage.setItem('Authorization', resp.headers.get('Authorization'));
         this.authService.setLogin = true;
+
         let cookie = getCookie("XSRF-TOKEN")!;
         if (cookie) {
           window.sessionStorage.setItem("XSRF-TOKEN", cookie);
         }
+
         this.router.navigate(['/dashboard']);
       });
     }

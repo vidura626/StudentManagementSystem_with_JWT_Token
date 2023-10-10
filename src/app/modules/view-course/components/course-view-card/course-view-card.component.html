@@ -9,8 +9,8 @@
   </mat-card-content>
   <mat-card-footer class="bg-black">
     <mat-card-actions>
-      <button mat-raised-button class="m-1 text-bg-success">View</button>
-      <button *ngIf="!isTeacher" mat-raised-button class="m-1 text-bg-success" (click)="viewCourse(course.id)" >Join</button>
+      <button mat-raised-button class="m-1 text-bg-success" (click)="viewCourse(course.id)">View</button>
+      <button *ngIf="!isTeacher" mat-raised-button class="m-1 text-bg-success">Join</button>
       <button *ngIf="isTeacher" mat-raised-button class="m-1 text-bg-danger" (click)="deleteCourse(course.id)">Delete
       </button>
       <button *ngIf="isTeacher" mat-raised-button class="m-1 text-bg-primary" (click)="updateCourse(course)">Update

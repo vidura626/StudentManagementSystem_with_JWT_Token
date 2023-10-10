@@ -69,13 +69,15 @@ export class ViewAllCourseComponent implements OnInit {
   ];
   courseViews: CourseView[] = []; // Replace with your actual card data
   totalItems: number = 100; // Total number of items
-  pageSize: number = 10; // Number of items per page
+  pageSize: number = 5; // Number of items per page
   pageIndex = 0;
   showFirstLastButtons = true;
   getCourses: CourseRequest[] = [];
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(private courseService: CourseService) {
   }
+
   ngOnInit(): void {
     this.setPageItems();
   }

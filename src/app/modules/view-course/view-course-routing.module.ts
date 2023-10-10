@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CourseSettingsComponent} from "./pages/course-settings/course-settings.component";
+import {CourseViewCardComponent} from "./components/course-view-card/course-view-card.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('../register-course/register-course.module').then(m => m.RegisterCourseModule)
       }
     ]
+  },
+  {
+    path: 'view/:id',
+    component: CourseSettingsComponent
   }
 ];
 

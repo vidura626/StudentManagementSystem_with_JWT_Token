@@ -3,6 +3,7 @@ import {CourseView} from "../../../../shared/model/views/Course.view";
 import {LoginService} from "../../../../core/service/login.service";
 import {CourseService} from "../../../../core/service/course.service";
 import {TeacherService} from "../../../../core/service/teacher.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'wj-course-view-card',
@@ -22,7 +23,8 @@ export class CourseViewCardComponent implements OnInit {
 
   constructor(private loginService: LoginService,
               private courseService: CourseService,
-              private teacherService: TeacherService) {
+              private teacherService: TeacherService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class CourseViewCardComponent implements OnInit {
   }
 
   viewCourse(id: number) {
-
+    console.log(id)
+    this.router.navigate(['courses/view', id]);
   }
 }

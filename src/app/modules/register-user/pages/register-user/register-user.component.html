@@ -81,9 +81,9 @@
         <div class="col">
           <mat-form-field *ngIf="registerForm.get('role')?.value === 'teacher'">
             <mat-label>Select Admin</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let admin of admins" [value]="admin.id">
-                {{admin.userDetails.userName}}
+            <mat-select formControlName="adminUserName">
+              <mat-option *ngFor="let admin of admins" [value]="admin.userDetails.userName">
+                {{admin.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>

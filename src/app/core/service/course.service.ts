@@ -39,7 +39,11 @@ export class CourseService {
     });
   }
 
-  getCourse(courseID: number) {
-    return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'courses/' + courseID);
+  getCourse(courseID: number | undefined) {
+    return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'course/get/' + courseID);
+  }
+
+  getAllCourses() {
+    return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'course/getall');
   }
 }

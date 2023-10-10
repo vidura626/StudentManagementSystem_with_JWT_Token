@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CourseService} from "../../../../core/service/course.service";
 import {CourseRequest} from "../../../../shared/model/rquestModels/Course.request";
 import {TeacherService} from "../../../../core/service/teacher.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'wj-course-settings',
@@ -11,16 +12,18 @@ import {TeacherService} from "../../../../core/service/teacher.service";
 })
 export class CourseSettingsComponent {
   courseForm!: FormGroup;
-  @Input() private courseID!: number;
+  @Input() private courseID!: number | undefined;
 
   constructor(private formBuilder: FormBuilder,
               private courseService: CourseService,
-              private teacherService: TeacherService) {
+              private teacherService: TeacherService,
+              private router: Router) {
+    this.courseID = this.router.getCurrentNavigation()?.id;
   }
 
   ngOnInit(): void {
     this.courseService.getCourse(this.courseID).subscribe(res => {
-      let courseReq:CourseRequest = res.data;
+      let courseReq: CourseRequest = res.data;
       this.courseForm = this.formBuilder.group({
         id: new FormControl(courseReq.id),
         name: new FormControl(courseReq.name, {
@@ -41,7 +44,22 @@ export class CourseSettingsComponent {
         }),
       });
     })
-
+    // if (this.courseID) {
+    //   this.courseService.getCourse(this.courseID).subscribe(
+    //     res => {
+    //       let courseReq: CourseRequest = res.data;
+    //       this.courseForm.setValue(
+    //         {
+    //           id: courseReq.id,
+    //           name: courseReq.name,
+    //           description: courseReq.description,
+    //           fee: courseReq.fee,
+    //           teacherID: courseReq.teacherID
+    //         }
+    //       );
+    //     }
+    //   );
+    // }
   }
 
   courseDetails!: CourseRequest;
@@ -63,5 +81,9 @@ export class CourseSettingsComponent {
 
     }
     console.log(this.courseForm.value);
+  }
+
+  reset(courseForm: FormGroup) {
+    this.courseForm.reset();
   }
 }

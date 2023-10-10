@@ -1,7 +1,18 @@
-<div class="card-container layout">
-  <wj-course-view-card *ngFor="let course of courseViews" [course]="course"></wj-course-view-card>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-toolbar class="bg-gradient">
+      <mat-card-title class="p-0">All Courses</mat-card-title>
+    </mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-container layout">
+      <wj-course-view-card class="test" *ngFor="let course of courseViews" [course]="course"></wj-course-view-card>
+    </div>
 
-<mat-paginator [showFirstLastButtons]="showFirstLastButtons"
-               [length]="totalItems" [pageSize]="pageSize"
-               (page)="onPageChange($event)"></mat-paginator>
+
+    <mat-paginator [showFirstLastButtons]="showFirstLastButtons"
+                   [length]="totalItems" [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)"></mat-paginator>
+  </mat-card-content>
+</mat-card>

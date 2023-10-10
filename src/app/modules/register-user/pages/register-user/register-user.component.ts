@@ -4,12 +4,12 @@ import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from 
 import {UserService} from "../../../../core/service/user.service";
 import {UserInfoRequest} from "../../../../shared/model/rquestModels/UserInfo.request";
 import {RolesInterface} from "../../../../shared/model/Roles.interface";
-import {TeacherInterface} from "../../../../shared/model/core/Teacher.interface";
 import {TeacherService} from "../../../../core/service/teacher.service";
 import Swal from 'sweetalert2';
 import {AdminService} from "../../../../core/service/admin.service";
 import {catchError} from "rxjs";
 import {Router} from "@angular/router";
+import {AdminInterface} from "../../../../shared/model/core/Admin.interface";
 
 
 @Component({
@@ -68,7 +68,7 @@ export class RegisterUserComponent implements OnInit {
       validators: [Validators.required],
       updateOn: 'blur',
     }),
-    admin: new FormControl('', {
+    adminUserName: new FormControl('', {
       // validators: [Validators.required],
       updateOn: 'blur',
     })
@@ -78,8 +78,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   regUserInfo!: UserInfoRequest;
-  admins: TeacherInterface[] = [];
-  adminFormControl: FormControl = new FormControl();
+  admins: AdminInterface[] = [];
 
   isPwdMtches!: boolean;
 
@@ -87,9 +86,9 @@ export class RegisterUserComponent implements OnInit {
     if (registerForm.valid) {
       this.regUserInfo = {
         role: registerForm.value.role,
-        adminUserName: registerForm.value.admin,
+        adminUserName: registerForm.value.adminUserName,
         status: false,
-        name: registerForm.value.firstName,
+        name: registerForm.value.name,
         address: registerForm.value.address,
         contact: registerForm.value.contact,
         userName: registerForm.value.userName,
@@ -112,8 +111,7 @@ export class RegisterUserComponent implements OnInit {
           )
         )
         .subscribe(res => {
-          //TODO: Handle Response of reg user
-          console.log(res)
+          //Handle Response of reg user
           Swal.fire({
             position: 'top-end',
             icon: 'success',
