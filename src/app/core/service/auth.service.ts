@@ -4,6 +4,7 @@ import {API_PATH_SERVICE} from "./api-path.service";
 import {ApiPathInterface} from "../../shared/model/util/ApiPath.interface";
 import {ResponseInterface} from "../../shared/model/util/Response.interface";
 import {User} from "../../shared/model/util/User";
+import {RolesInterface} from "../../shared/model/Roles.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,15 @@ export class AuthService {
   private isLogin = false;
   private http: HttpClient = inject(HttpClient);
   private apiPath: ApiPathInterface = inject(API_PATH_SERVICE);
+  role!: RolesInterface;
+
+  set setRole(role: RolesInterface) {
+    this.role = role;
+  }
+
+  get getRole() {
+    return this.role;
+  }
 
   login(user: User) {
     window.sessionStorage.setItem("userdetails", JSON.stringify(user));

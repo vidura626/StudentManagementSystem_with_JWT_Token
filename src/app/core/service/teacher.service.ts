@@ -42,4 +42,8 @@ export class TeacherService {
   public getTeacher(teacherID: number) {
     return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'teachers/' + teacherID);
   }
+
+  getAllTeachers() {
+    return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'teachers');
+  }
 }

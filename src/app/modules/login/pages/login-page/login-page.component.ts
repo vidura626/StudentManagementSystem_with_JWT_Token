@@ -13,10 +13,9 @@ import {catchError} from "rxjs";
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
-
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private router:Router) {
+              private router: Router) {
   }
 
   ngOnInit()
