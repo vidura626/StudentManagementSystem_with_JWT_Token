@@ -11,23 +11,29 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {ViewCourseModule} from "../view-course/view-course.module";
+import {MatExpansionModule} from "@angular/material/expansion";
+import { DashboardButtonsComponent } from './components/dashbbord-buttons/dashboard-buttons.component';
+import { ToggleThemeComponent } from './components/togle-theme/toggle-theme.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    DashboardButtonsComponent,
+    ToggleThemeComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    ViewCourseModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        ViewCourseModule,
+        MatExpansionModule
+    ]
 })
 export class DashboardModule { }

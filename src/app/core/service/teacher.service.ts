@@ -44,6 +44,10 @@ export class TeacherService {
   }
 
   getAllTeachers() {
-    return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'teachers');
+    return this.http.get<ResponseInterface>(this.apiPath.apiPath + 'teacher/getall', {
+      responseType: 'json',
+      observe: 'body',
+      reportProgress: true
+    });
   }
 }

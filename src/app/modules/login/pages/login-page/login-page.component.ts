@@ -19,9 +19,7 @@ export class LoginPageComponent implements OnInit {
               private router: Router) {
   }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -34,24 +32,20 @@ export class LoginPageComponent implements OnInit {
         username: this.loginForm.value.username,
         password: this.loginForm.value.password
       }
+      sessionStorage.setItem("userdetails", JSON.stringify(user));
       this.authService.login(user).pipe(
         catchError(error => {
-          this.router.navigate(['/login']).then(r => {
-            window.location.reload();
-          });
           alert('Invalid Username or Password');
-          return error
+          this.router.navigate(['/login']);
+          return error;
         })
       ).subscribe((resp: any) => {
         window.sessionStorage.setItem('Authorization', resp.headers.get('Authorization'));
-        this.authService.setLogin = true;
-
-        let cookie = getCookie("XSRF-TOKEN")!;
-        if (cookie) {
-          window.sessionStorage.setItem("XSRF-TOKEN", cookie);
+        if(getCookie("XSRF-TOKEN")) {
+          window.sessionStorage.setItem('XSRF-TOKEN', <string>getCookie("XSRF-TOKEN"));
         }
-
-        this.router.navigate(['/dashboard']);
+        sessionStorage.removeItem("userdetails");
+        this.router.navigate(['/courses/register']);
       });
     }
   }

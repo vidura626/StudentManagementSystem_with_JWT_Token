@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('../app/modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [authGuard]
+    // canActivate: [authGuard]
   }
   ,
   {
@@ -22,7 +22,12 @@ const routes: Routes = [
     loadChildren: () => import('../app/modules/view-course/view-course.module').then(m => m.ViewCourseModule)
   },
   {
-    path: '', redirectTo: 'login', pathMatch: 'full'
+    path: 'courses/register',
+    loadChildren: () => import('../app/modules/register-course/register-course.module').then(m => m.RegisterCourseModule),
+    canActivate: [authGuard]
+  },
+  {
+    path: '', redirectTo: '/dashboard', pathMatch: 'full'
   }
 ];
 

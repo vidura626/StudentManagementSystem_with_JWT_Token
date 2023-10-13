@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CourseView} from "../../../../shared/model/views/Course.view";
 import {CourseService} from "../../../../core/service/course.service";
 import {CourseRequest} from "../../../../shared/model/rquestModels/Course.request";
@@ -9,6 +9,7 @@ import {CourseRequest} from "../../../../shared/model/rquestModels/Course.reques
   styleUrls: ['./view-all-course.component.scss']
 })
 export class ViewAllCourseComponent implements OnInit {
+  @Input() role!: string;
   courseViewsTest: CourseView[] = [
     {
       id: 1,

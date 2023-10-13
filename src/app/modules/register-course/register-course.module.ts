@@ -10,6 +10,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatSelectModule} from "@angular/material/select";
+import {CoreModule} from "../../core/core.module";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatNativeDateModule,
     MatButtonModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    CoreModule
   ]
 })
 export class RegisterCourseModule { }

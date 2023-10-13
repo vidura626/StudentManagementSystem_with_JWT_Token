@@ -28,11 +28,12 @@
             <textarea matInput formControlName="description" required></textarea>
           </mat-form-field>
         </div>
-        <div class="col">
+        <div class="col" >
           <mat-form-field class="full-width">
             <mat-label>Teacher:</mat-label>
             <mat-select formControlName="teacherID">
-              <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">{{ teacher.name }}</mat-option>
+              <mat-option  *ngFor="let teacher of teachers"
+                          [value]="teacher?.id">{{ teacher?.name }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

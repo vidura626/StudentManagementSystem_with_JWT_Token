@@ -15,7 +15,10 @@ export class CourseService {
   }
 
   registerCourse(courseDetails: CourseRequest) {
-    return this.http.post<ResponseInterface>(this.apiPath.apiPath + 'courses/register', courseDetails);
+    return this.http.post(this.apiPath.apiPath + 'course/add', courseDetails, {
+      withCredentials: true,
+      observe: "response",
+    });
   }
 
   getAllCoursesWithPaginator(number: number, pageSize: number) {
@@ -32,7 +35,7 @@ export class CourseService {
   }
 
   updateCourse(course: CourseRequest) {
-    return this.http.put<ResponseInterface>(this.apiPath.apiPath + 'courses/', course, {
+    return this.http.put<ResponseInterface>(this.apiPath.apiPath + 'course/update', course, {
       params: {
         id: course.id.toString(),
       }
