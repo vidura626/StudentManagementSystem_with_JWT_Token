@@ -1,0 +1,20 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened class="width-200">
+    <wj-dashboard-buttons [role]="role"></wj-dashboard-buttons>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="grid-container">
+      <p>
+        <mat-toolbar color="primary">
+          <span>My Dashboard</span>
+          <span class="example-spacer"></span>
+          <wj-toggle-theme></wj-toggle-theme>
+        </mat-toolbar>
+      </p>
+      <wj-view-all-course [role]="role"></wj-view-all-course>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

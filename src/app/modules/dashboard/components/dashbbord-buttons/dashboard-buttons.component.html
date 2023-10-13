@@ -1,0 +1,72 @@
+<mat-accordion>
+  <button>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Profile
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <button mat-flat-button>View</button>
+      </div>
+      <div>
+        <button mat-flat-button>Log out</button>
+      </div>
+    </mat-expansion-panel>
+  </button>
+  <button>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Course
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <button mat-flat-button>All</button>
+      </div>
+      <div>
+        <button mat-flat-button *ngIf="isTeacher">Create</button>
+      </div>
+      <div>
+        <button mat-flat-button *ngIf="isStudent">Joined</button>
+      </div>
+      <div>
+        <button mat-flat-button *ngIf="isStudent">Teachers</button>
+      </div>
+    </mat-expansion-panel>
+  </button>
+  <button *ngIf="isAdmin || isAdmin">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Student
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <button mat-flat-button>View</button>
+      </div>
+    </mat-expansion-panel>
+  </button>
+  <!--  Teacher Section-->
+  <button *ngIf="isAdmin">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Teacher
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <button mat-flat-button>View</button>
+      </div>
+      <div>
+        <button mat-flat-button>Approve</button>
+      </div>
+      <div>
+        <button mat-flat-button>Courses</button>
+      </div>
+    </mat-expansion-panel>
+  </button>
+</mat-accordion>
